@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft - A Message For Shravani</title>
+<style>
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Minecraft',sans-serif;
+overflow:hidden;
+height:100vh;
+background:linear-gradient(180deg,#0d1b2a,#1b263b,#415a77,#e09f5a);
+color:white;
+}
+.screen{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;flex-direction:column}
+.panorama{
+position:absolute;inset:0;
+background:linear-gradient(90deg,rgba(255,255,255,.03),transparent,rgba(255,255,255,.03));
+animation:pan 20s linear infinite;
+}
+@keyframes pan{
+from{transform:translateX(-20%)}
+to{transform:translateX(20%)}
+}
+.logo{
+font-size:4.5rem;
+text-shadow:5px 5px #000;
+z-index:1;
+}
+.splash{
+position:absolute;
+top:22%;
+right:25%;
+color:yellow;
+transform:rotate(-15deg);
+animation:pulse 1s infinite alternate;
+}
+@keyframes pulse{from{scale:1}to{scale:1.1}}
+.menu{z-index:1;margin-top:30px}
+.btn{
+display:block;
+width:320px;
+margin:10px auto;
+padding:14px;
+font-family:'Minecraft',sans-serif;
+background:#7d7d7d;
+border:3px solid #222;
+color:white;
+cursor:pointer;
+box-shadow:0 4px #333;
+}
+.btn:hover{background:#5cb85c}
+#loading,#book,#end{display:none}
+.bar{
+width:300px;height:20px;border:2px solid white;margin-top:20px;
+}
+.fill{
+height:100%;width:0;background:#5cb85c;
+animation:load 2s forwards;
+}
+@keyframes load{to{width:100%}}
+.bookbox{
+background:#ead8b1;color:#222;
+width:min(90vw,800px);
+padding:30px;border:8px solid #6b4b2a;
+}
+.page{display:none}
+.page.active{display:block}
+.achievement{
+background:#1f1f1f;border:3px solid #7cff7c;padding:20px;
+}
+</style>
+</head>
+<body>
+
+<div id="menu" class="screen">
+<div class="panorama"></div>
+<div class="logo">MINECRAFT</div>
+<div class="splash">A Message For Shravani ❤️</div>
+
+<div class="menu">
+<button class="btn" onclick="start()">Read My Letter</button>
+<button class="btn">Memories</button>
+<button class="btn">Credits</button>
+</div>
+</div>
+
+<div id="loading" class="screen">
+<h1>Loading World...</h1>
+<div class="bar"><div class="fill"></div></div>
+</div>
+
+<div id="book" class="screen">
+<div class="bookbox">
+<div class="page active">
+<h2>Page 1</h2><br>
+Dear Shravani,<br><br>
+If Minecraft taught me anything, it's that some mistakes can't be fixed with a simple command.<br><br>
+There is no /undo.<br>
+There is no loading a previous save.
+</div>
+
+<div class="page">
+<h2>Page 2</h2><br>
+There is only accepting what happened, learning from it, and becoming better than the person who made those mistakes.<br><br>
+I know words cannot erase what happened.
+</div>
+
+<div class="page">
+<h2>Page 3</h2><br>
+If life were Minecraft, I would wish for a way to undo every mistake I made. But there is no /undo command, only the choice to accept what happened, learn from it, and become a better person than I was before. I am truly sorry, Shravani.
+</div>
+<br>
+<button class="btn" onclick="nextPage()">Next Page</button>
+</div>
+</div>
+
+<div id="end" class="screen">
+<div class="achievement">
+<h2>ACHIEVEMENT UNLOCKED</h2>
+<h3>Taking Responsibility</h3>
+</div>
+<br>
+<p>Thank you for being part of my story.</p>
+<p>— Rugved</p>
+</div>
+
+<script>
+let p=0;
+function start(){
+menu.style.display='none';
+loading.style.display='flex';
+setTimeout(()=>{
+loading.style.display='none';
+book.style.display='flex';
+},2200);
+}
+function nextPage(){
+let pages=document.querySelectorAll('.page');
+pages[p].classList.remove('active');
+p++;
+if(p>=pages.length){
+book.style.display='none';
+end.style.display='flex';
+return;
+}
+pages[p].classList.add('active');
+}
+</script>
+</body>
+</html>
