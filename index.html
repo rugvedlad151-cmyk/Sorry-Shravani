@@ -3,106 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I'm Sorry, Shravani</title>
+<title>A Message For Shravani</title>
 
 <style>
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Georgia, serif;
 }
 
 body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#0f0f0f,#3d0a0a);
-    overflow:hidden;
+    font-family:'Minecraft', sans-serif;
+    background:url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    min-height:100vh;
     color:white;
 }
 
-.container{
-    max-width:700px;
+.overlay{
+    background:rgba(0,0,0,0.65);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.menu{
     text-align:center;
-    padding:30px;
-    animation:fadeIn 2s ease;
 }
 
-h1{
-    font-size:3rem;
-    color:#ffb3b3;
+.logo{
+    font-size:4rem;
     margin-bottom:20px;
+    text-shadow:4px 4px 0 #000;
 }
 
-p{
-    font-size:1.2rem;
+.subtitle{
+    font-size:1.3rem;
+    color:#ff9ae6;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:block;
+    width:320px;
+    margin:12px auto;
+    padding:14px;
+    background:#7a7a7a;
+    border:3px solid #222;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#5cb85c;
+}
+
+.book{
+    display:none;
+    max-width:900px;
+    background:#f3e6c4;
+    color:#222;
+    padding:40px;
+    border:8px solid #6a4a2b;
+    margin:20px;
     line-height:1.8;
 }
 
-.heart{
-    position:absolute;
-    color:#ff6b6b;
-    opacity:0.4;
-    animation:float linear infinite;
+.book h2{
+    margin-bottom:20px;
 }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-    }
-    to{
-        transform:translateY(-100px);
-    }
+.back{
+    margin-top:25px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>I'm Sorry, Shravani</h1>
+<div class="overlay">
 
-    <p>
-        Dear Shravani,
-        <br><br>
-        I know words alone cannot undo the pain I've caused.
-        I know some things cannot be fixed simply by saying sorry.
-        But if there is one thing I want you to know, it is that I truly regret my actions.
-        <br><br>
-        Every day I carry the weight of what happened and the consequences of my choices.
-        <br><br>
-        Whether you forgive me or not, I will always be grateful for the moments we shared.
-        <br><br>
-        Thank you for being a part of my life.
-        <br><br>
-        ❤️
-    </p>
+<div class="menu" id="menu">
+    <div class="logo">MINECRAFT</div>
+    <div class="subtitle">A Message For Shravani ❤️</div>
+
+    <button class="btn" onclick="openBook()">Read My Apology</button>
+    <button class="btn">Memories</button>
+    <button class="btn">From My Heart</button>
+</div>
+
+<div class="book" id="book">
+
+<h2>Dear Shravani,</h2>
+
+<p>
+I know words alone cannot undo the pain I've caused.
+
+I know some things cannot be fixed simply by saying sorry.
+
+But if there is one thing I want you to know, it is that I truly regret my actions.
+<br><br>
+
+Every day I carry the weight of what happened and the consequences of my choices.
+<br><br>
+
+Whether you forgive me or not, I will always be grateful for the moments we shared.
+<br><br>
+
+Thank you for being a part of my life.
+<br><br>
+
+❤️
+</p>
+
+<button class="btn back" onclick="goBack()">Back To Menu</button>
+
+</div>
+
 </div>
 
 <script>
-for(let i=0;i<40;i++){
-    let heart=document.createElement("div");
-    heart.innerHTML="❤";
-    heart.classList.add("heart");
+function openBook(){
+    document.getElementById("menu").style.display="none";
+    document.getElementById("book").style.display="block";
+}
 
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(Math.random()*25+10)+"px";
-    heart.style.animationDuration=(Math.random()*6+4)+"s";
-
-    document.body.appendChild(heart);
+function goBack(){
+    document.getElementById("book").style.display="none";
+    document.getElementById("menu").style.display="block";
 }
 </script>
 
